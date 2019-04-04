@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="../scripts/index.js"></script>
     <link rel="shortcut icon" type="imagem.jpg" href="../imagens/logo.jpg" class="icon">
     <link rel="stylesheet" href="./index.css">
     <title>Cifrador</title>
@@ -16,14 +15,13 @@
     <form class="container">
         <h2 class="titulo-2">Codifique aqui</h2>
         <p class="text">Palavra</p>
-        <input type="text" class="palavra" class="input">
+        <input type="text" class="palavra input">
         <p class="text">Chave</p>
-        <input type="text" placeholder="1-26" class="senha" class="input">
+        <input type="text" placeholder="1-26" class="senha input">
         <button class="botao">Cifrar</button>
-        <button class="botao">Descifrar</button>
-        <div>
+        <button onclick="descriptografar()">Descifrar</button>
+        <div class="retorno">
             <h3>Resultado</h3>
-            <p id="retorno "></p>
         </div>
       
     </form>
