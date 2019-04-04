@@ -7,9 +7,23 @@ function capElemento(ref) {
     return element;
 }
 
-const formulario = capElemento('.container')
-formulario.addEventListener('submit', function (event) {
-    verChave();
+
+
+const formulario = capElemento('.botao1')
+formulario.addEventListener('click', (event) => {
+capElemento(".retorno").value = " "
+    verChave()
+    criptografar(k)
+    event.preventDefault();
+}, false)
+
+const form = capElemento('.botao2')
+form.addEventListener('click', (event) => {
+
+    
+
+    verChave()
+    descriptografar(k)
     event.preventDefault();
 }, false)
 
@@ -19,7 +33,6 @@ function verChave() {
     k = key.value;
     if (k <= 26 || k < 0) {
         console.log("Deu certo!");
-        criptografar(k);
     } else {
         alert('Chave inválida!');
     }
@@ -28,8 +41,6 @@ function verChave() {
 function criptografar(k) {
     let chave = parseInt(k);
     let word = capElemento('.palavra').value.toLowerCase();
-    console.log(word);
-
     let retorno = ""
 
     for (let i = 0; i < word.length; i++) {
@@ -43,36 +54,21 @@ function criptografar(k) {
                 j++
             }
             if (j < alfabeto.length + chave) {
-                retorno += alfabeto[j + chave -1]
+                retorno += alfabeto[j + chave - 1]
             } else {
                 alert('Erro!')
             }
         }
     }
-    console.log(retorno);
     retorneHTML(retorno);
 }
 
-
-function retorneHTML(retorno) {
-    let ret = document.createElement("p");
-    let conteudo = document.createTextNode(retorno);
-    ret.appendChild(conteudo);
-    capElemento(".retorno").appendChild(ret);
-}
-
-function reserva(){
-    verChave();
-
-}
 function descriptografar(k) {
     let chave = parseInt(k);
     let word = capElemento('.palavra').value.toLowerCase();
-    console.log(word);
-
     let retorno = ""
 
-    for (let i = 0; i < word.length - 1; i++) {
+    for (let i = 0; i < word.length; i++) {
         if (word[i] == " ") {
             retorno += "-"
         } else {
@@ -80,46 +76,21 @@ function descriptografar(k) {
             let j = 0
             while (letraCifrada != word[i]) {
                 letraCifrada = alfabeto[j]
-                j--
+                j++
             }
             if (j < alfabeto.length - chave) {
-                retorno += alfabeto[j - chave -1]
+                retorno += alfabeto[j - chave - 1]
             } else {
                 alert('Erro!')
             }
         }
     }
+    retorneHTML(retorno);
 }
-    
-    // console.log(retorno);
 
-    // let chave = parseInt(key);
-    // let word = capElemento('palavra').toLowerCase();
-    // let retorno = ""
-    // let num = word[word.length - 1]
-    //for (let i = 0; i < word.length - 1; i++) {
-        //if (word[i] == "-") {
-           // retorno += " "
-        //} else {
-           // let letraCifrada = null
-           // let j = 26
-           // while (letraCifrada != word[i]) {
-            //    letraCifrada = alfabeto[j]
-            //    j--
-            //}
-            //if (j < alfabeto.length - chave) {
-            //    retorno += alfabeto[j - chave]
-            //}
-            //else if (j > alfabeto.length - chave) {
-              //  retorno += alfabeto[j]
-           // }
-            //else {
-              //  alert('Erro!')
-           // }
-       // }
-       // console.log(retorno);
-
-    //}
-    //retorneHTML(retorno)
-//}
-
+function retorneHTML(retorno) {
+    let ret = document.createElement("p");
+    let conteudo = document.createTextNode(retorno);
+    ret.appendChild(conteudo);
+    capElemento(".retorno").appendChild(ret);
+}
