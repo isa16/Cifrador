@@ -1,6 +1,7 @@
 var alfabeto = ["a", "b", "c", "d", "e", "f",
     "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
-    "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+    "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+]
 
 function capElemento(ref) {
     const element = document.querySelector(ref);
@@ -19,14 +20,14 @@ btnDecifrar.addEventListener('click', () => {
 
 function verChave() {
     let key = capElemento('.senha').value;
-    if (key <= 26 || key < 0) {} else {
+    if (key <= 26 || key < 0) { } else {
         alert('Chave inválida!');
     }
     return key
 }
 
 function criptografar(k) {
-    capElemento(".retorno").innerHTML = " "
+    capElemento(".retorno").innerHTML = "<h3>Resultado<h3>"
     let chave = parseInt(k);
     let word = capElemento('.palavra').value.toLowerCase();
     let retorno = ""
@@ -54,7 +55,7 @@ function criptografar(k) {
 }
 
 function descriptografar(k) {
-    capElemento(".retorno").innerHTML = " "
+    capElemento(".retorno").innerHTML = "<h3>Resultado<h3>"
     let chave = parseInt(k);
     let word = capElemento('.palavra').value.toLowerCase();
     let retorno = ""
