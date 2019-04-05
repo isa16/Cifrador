@@ -1,37 +1,23 @@
+body{
+    background-image: url(../imagens/img_fundo.jpg)
+}
+
 .titulo{
     text-align: center;
-    background-color: aquamarine;
 }
 
 .container{
+    background-image: linear-gradient(#A3BBE4, #6FB3EF);
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    background-color: bisque;
-}
-
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP');
-
-body{
-    font-family: 'Noto Sans JP', sans-serif;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-body, header, main, input, h2, p, a{
-    margin: 0;
-    padding: 0;
-}
-
-header{
-    width: 100%;
-    height: 8vh;
-    background-color: rgba(55, 58, 54, 0.95);
-}
-
-header h2{
-    text-align: center;
-    font-size: 2.25vw;
-    padding-top: 0.75vh;
-    font-weight: bold;
-    color: aliceblue;
+    justify-content: space-around;
+    box-sizing: border-box;    
+    height: 549px;
+    width: 305px;
+    padding: 20px;  
+    margin-top: 50px;
+    margin-left: 530px;
+    margin-right: 5px; 
 }

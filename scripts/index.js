@@ -7,38 +7,26 @@ function capElemento(ref) {
     return element;
 }
 
+const btnCifrar = capElemento('#cifrar')
+btnCifrar.addEventListener('click', () => {
+    criptografar(verChave())
+})
 
-
-const formulario = capElemento('.botao1')
-formulario.addEventListener('click', (event) => {
-capElemento(".retorno").value = " "
-    verChave()
-    criptografar(k)
-    event.preventDefault();
-}, false)
-
-const form = capElemento('.botao2')
-form.addEventListener('click', (event) => {
-
-    
-
-    verChave()
-    descriptografar(k)
-    event.preventDefault();
-}, false)
+const btnDecifrar = capElemento('#decifrar')
+btnDecifrar.addEventListener('click', () => {
+    descriptografar(verChave())
+})
 
 function verChave() {
-    let key = capElemento('.senha');
-    console.log(key)
-    k = key.value;
-    if (k <= 26 || k < 0) {
-        console.log("Deu certo!");
-    } else {
+    let key = capElemento('.senha').value;
+    if (key <= 26 || key < 0) {} else {
         alert('Chave inválida!');
     }
+    return key
 }
 
 function criptografar(k) {
+    capElemento(".retorno").innerHTML = " "
     let chave = parseInt(k);
     let word = capElemento('.palavra').value.toLowerCase();
     let retorno = ""
@@ -53,17 +41,20 @@ function criptografar(k) {
                 letraCifrada = alfabeto[j]
                 j++
             }
-            if (j < alfabeto.length + chave) {
-                retorno += alfabeto[j + chave - 1]
-            } else {
-                alert('Erro!')
+
+            let newPos = (j + chave) - 1
+
+            if (newPos > 25) {
+                newPos -= 26
             }
+            retorno += alfabeto[newPos]
         }
     }
     retorneHTML(retorno);
 }
 
 function descriptografar(k) {
+    capElemento(".retorno").innerHTML = " "
     let chave = parseInt(k);
     let word = capElemento('.palavra').value.toLowerCase();
     let retorno = ""
@@ -78,11 +69,13 @@ function descriptografar(k) {
                 letraCifrada = alfabeto[j]
                 j++
             }
-            if (j < alfabeto.length - chave) {
-                retorno += alfabeto[j - chave - 1]
-            } else {
-                alert('Erro!')
+
+            let newPos = (j - chave) - 1
+
+            if (newPos < 0) {
+                newPos += 26
             }
+            retorno += alfabeto[newPos]
         }
     }
     retorneHTML(retorno);
