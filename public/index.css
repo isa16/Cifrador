@@ -4,6 +4,8 @@ body {
 
 .titulo {
     text-align: center;
+    width: 80%;
+    margin: 1vh 10%;
 }
 
 .container {
@@ -15,20 +17,20 @@ body {
     justify-content: space-around;
     box-sizing: border-box;
     height: 549px;
-    width: 305px;
+    width: 40%;
     padding: 20px;
-    margin-top: 50px;
-    margin-left: 530px;
-    margin-right: 5px;
+    margin-top: 10%;
+    margin-left: 30%;
     
 }
 
 input{
-    width: 200px;
-    height: 30;
+    width: 90%;
+    height: 8%;
     justify-content: center;
     padding: 5px;
-    margin: 20px;
+    box-sizing: border-box;
+    margin: 1vh 5%;
     border-radius: 50px;
     background: rgb(166, 202, 229);
 }
@@ -39,9 +41,9 @@ input{
     color: #EBEBEB;
     border-radius: 50px;
     text-align: center;
-    margin: 5px;
+    margin: 1vh auto;
     padding: 0;
     font-size: 15px;
-    width: 250px;
-    height: 25px;
+    width: 50%;
+    height: 5vh;
 }

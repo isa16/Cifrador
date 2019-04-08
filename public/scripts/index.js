@@ -29,32 +29,45 @@ function verChave() {
 function criptografar(k) {
     capElemento(".retorno").innerHTML = "<h3>Resultado<h3>"
     let chave = parseInt(k);
-    let word = capElemento('.palavra').value.toLowerCase();
+    let word = capElemento('.palavra').value;
     let retorno = ""
+    word = retirarAcento(word);
+    console.log(word);
+    
+
 
     for (let i = 0; i < word.length; i++) {
+        let veri = false
         if (word[i] == " ") {
-            retorno += "-"
+            retorno += " "
         } else {
             let letraCifrada = null
             let j = 0
             while (letraCifrada != word[i]) {
                 letraCifrada = alfabeto[j]
                 j++
+                if (j > alfabeto.length) {
+                    veri = true
+                    break;
+                }
             }
+            if (veri) {
+                retorno += word[i]
+            } else {
+                let newPos = (j + chave) - 1
 
-            let newPos = (j + chave) - 1
-
-            if (newPos > 25) {
-                newPos -= 26
+                if (newPos > alfabeto.length - 1) {
+                    newPos -= alfabeto.length
+                }
+                retorno += alfabeto[newPos]
             }
-            retorno += alfabeto[newPos]
         }
     }
     retorneHTML(retorno);
 }
 
 function descriptografar(k) {
+    let veri = false
     capElemento(".retorno").innerHTML = "<h3>Resultado<h3>"
     let chave = parseInt(k);
     let word = capElemento('.palavra').value.toLowerCase();
@@ -62,21 +75,28 @@ function descriptografar(k) {
 
     for (let i = 0; i < word.length; i++) {
         if (word[i] == " ") {
-            retorno += "-"
+            retorno += " "
         } else {
             let letraCifrada = null
             let j = 0
             while (letraCifrada != word[i]) {
                 letraCifrada = alfabeto[j]
                 j++
+                if (j > alfabeto.length) {
+                    veri = true
+                    break;
+                }
             }
+            if (veri) {
+                retorno += word[i]
+            } else {
+                let newPos = (j - chave) - 1
 
-            let newPos = (j - chave) - 1
-
-            if (newPos < 0) {
-                newPos += 26
+                if (newPos < 0) {
+                    newPos += alfabeto.length
+                }
+                retorno += alfabeto[newPos]
             }
-            retorno += alfabeto[newPos]
         }
     }
     retorneHTML(retorno);
@@ -87,4 +107,15 @@ function retorneHTML(retorno) {
     let conteudo = document.createTextNode(retorno);
     ret.appendChild(conteudo);
     capElemento(".retorno").appendChild(ret);
+}
+
+function retirarAcento(word) {
+    word = word.toLowerCase();
+    word = word.replace(new RegExp('[ÁÀÂÃ]', 'gi'), 'a');
+    word = word.replace(new RegExp('[ÉÈÊ]', 'gi'), 'e');
+    word = word.replace(new RegExp('[ÍÌÎ]', 'gi'), 'i');
+    word = word.replace(new RegExp('[ÓÒÔÕ]', 'gi'), 'o');
+    word = word.replace(new RegExp('[ÚÙÛ]', 'gi'), 'u');
+    word = word.replace(new RegExp('[Ç]', 'gi'), 'c');
+    return word;
 }
