@@ -32,9 +32,6 @@ function criptografar(k) {
     let word = capElemento('.palavra').value;
     let retorno = ""
     word = retirarAcento(word);
-    console.log(word);
-    
-
 
     for (let i = 0; i < word.length; i++) {
         let veri = false
